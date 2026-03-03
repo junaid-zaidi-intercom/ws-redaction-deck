@@ -614,9 +614,9 @@
         <div>
           <h3>Graceful fallback if resolution fails</h3>
           <p>
-            If <code>admin_id</code> cannot be resolved (e.g. not yet in cache), fall back gracefully
-            to a generic "Support Agent" label and the default avatar — the same values already
-            in the placeholder fields. Do not show a broken or empty UI.
+            If <code>admin_id</code> cannot be resolved, fall back gracefully to
+            <code>"Admin"</code> + default avatar — the same safe placeholders already
+            in the payload fields. Do not show a broken or empty UI.
           </p>
         </div>
       </div>
@@ -646,8 +646,8 @@
         <h3>Resolve identity via <code style="font-size:14px;">admin_id</code></h3>
         <p>
           Stop reading <code>adminName</code> / <code>adminAvatar</code> from the payload.
-          Look up the agent's public display info using <code>admin_id</code>.
-          Fall back to "Support Agent" + default avatar if unresolved.
+          Look up the agent's display info using <code>admin_id</code> via cache or API.
+          Fall back to <code>"Admin"</code> + default avatar if unresolved.
         </p>
       </div>
     </div>
