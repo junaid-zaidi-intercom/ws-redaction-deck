@@ -396,21 +396,21 @@
       <h3>BPOs are treated as separate entities — their data is PII to others</h3>
       <p>
         BPO (Business Process Outsourcing) agents operate under a strict identity boundary.
-        A BPO agent's real name and photo are PII from the perspective of the brand's
-        workspace — <strong style="color:#fff;">other teammates should not be able to see BPO agent identity</strong>.
-        This is a data separation requirement between two distinct organisations sharing a platform.
+        A BPO agent's real name and photo are PII from the perspective of the
+        workspace they operate in — <strong style="color:#fff;">other teammates should not be able to see BPO agent identity</strong>.
+        This is a data separation requirement between two distinct entities sharing a platform.
       </p>
     </div>
 
     <div class="cards cols-2">
       <div class="card">
         <div class="card-label" style="color:#ffca28;">The Risk</div>
-        <h3>BPO agent PII visible to brand teammates</h3>
+        <h3>BPO agent PII visible to other teammates</h3>
         <p>
           Events like <strong style="color:#fff;">admin_is_typing</strong> carry
           <code style="background:#0d1020;padding:2px 6px;border-radius:4px;font-size:13px;">adminName</code>
           and <code style="background:#0d1020;padding:2px 6px;border-radius:4px;font-size:13px;">adminAvatar</code>
-          in the payload — exposing real BPO agent identity to teammates in the brand's inbox.
+          in the payload — exposing real BPO agent identity to other teammates in inbox.
         </p>
       </div>
       <div class="card">
@@ -662,7 +662,7 @@
     <div class="card" style="border-color:#1e2440;background:#0d1020;">
       <div class="card-label" style="color:#546e7a;">Why this matters</div>
       <p style="color:#8b92b0;">
-        The primary goal is preventing brand teammates from seeing BPO agent identity in inbox.
+        The primary goal is preventing other teammates from seeing BPO agent identity in inbox.
         Because there is no separate WebSocket channel, end users via the SDK are also redacted
         as a side effect — which is why the SDK needs to resolve agent display info via
         <code style="font-size:12px;">admin_id</code> rather than reading it from the payload.
