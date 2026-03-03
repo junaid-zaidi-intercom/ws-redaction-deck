@@ -472,7 +472,7 @@
       </div>
 
       <div>
-        <div class="pill pill-green" style="margin-bottom:12px;">FF ON — now (fixed)</div>
+        <div class="pill pill-green" style="margin-bottom:12px;">FF ON — the fix</div>
         <pre class="code-block" style="font-size:12.5px;">{
   <span class="str">"admin_id"</span>: <span class="str">"12345"</span>,
   <span class="str">"adminName"</span>: <span class="str">"Admin"</span>,
@@ -483,7 +483,7 @@
   <span class="str">"isRedacted"</span>: <span class="kw">true</span>
 }</pre>
         <p style="margin-top:10px;font-size:12px;color:#546e7a;">
-          Placeholders keep SDK alive. <code>isRedacted: true</code> signals to resolve via <code>admin_id</code>.
+          SDK resolves real identity from <code>admin_id</code> via cache or API call.
         </p>
       </div>
     </div>
@@ -538,13 +538,14 @@
       <div class="tl-item">
         <div class="tl-dot" style="background:#1a2050;color:#ffca28;">3</div>
         <div class="tl-content">
-          <h3>Interim fix — safe defaults injected</h3>
+          <h3>The fix — safe placeholders + <code style="font-size:14px;color:#c3e88d;">isRedacted: true</code></h3>
           <p>
-            When the FF is ON, we now send safe placeholder values so nothing crashes:
+            When the FF is ON, we send safe placeholder values so the SDK doesn't break:
             <code style="color:#c3e88d;">adminName = "Admin"</code>,
             <code style="color:#c3e88d;">adminAvatar = default avatar</code>,
             <code style="color:#c3e88d;">isRedacted = true</code>.
-            This keeps the SDK functional while we align on the correct long-term approach.
+            The SDK is expected to resolve real identity from <code>admin_id</code>
+            via cache or API call.
           </p>
         </div>
       </div>
@@ -599,11 +600,11 @@
       <div class="ask-item">
         <div class="ask-num">2</div>
         <div>
-          <h3>Resolve display identity via <code style="font-size:14px;background:#0d1020;padding:2px 6px;border-radius:4px;">admin_id</code></h3>
+          <h3>Resolve display identity via <code style="font-size:14px;background:#0d1020;padding:2px 6px;border-radius:4px;">admin_id</code> — from cache or API</h3>
           <p>
-            Use the <code>admin_id</code> in the event to look up the agent's
-            <strong style="color:#fff;">customer-facing</strong> display name and avatar from your own
-            data source (teammate store, REST API, etc.). This is the correct identity to show end users.
+            Use the <code>admin_id</code> in the event to resolve the agent's display name and avatar —
+            either from a <strong style="color:#fff;">local cache</strong> if already fetched,
+            or via an <strong style="color:#fff;">API call</strong> if not. Do not read from the payload fields.
           </p>
         </div>
       </div>
